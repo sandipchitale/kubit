@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  user-select: none;
+}
+
+.drag {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+  cursor: default;
+}
+
+a.link {
+  color: inherit;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+pre {
+  background-color: #fff;
+  border: 1px dotted #aaa;
+  padding: 1em;
+  counter-reset: line;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+pre > code {
+  counter-increment: line;
+}
+
+pre > code::before {
+  display: inline-block;
+  width: 3em;
+  text-align: right;
+  border-right: 1px solid #eee;
+  content: counter(line) " ";
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.subtle {
+  font-size: 80%;
+  color: #999;
+}
+
+*:focus {
+  outline: none;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+mat-toolbar ku-kubit-icon {
+  font-size: 20px;
+}
+
+.mat-table {
+  display: block;
+}
+
+.mat-row {
+  user-select: text;
+}
+
+.mat-row,
+.mat-header-row {
+  display: flex;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 24px;
+}
+
+.mat-cell,
+.mat-header-cell {
+  flex: 1;
+  overflow: hidden;
+  word-wrap: break-word;
+}

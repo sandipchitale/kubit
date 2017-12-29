@@ -1,0 +1,16 @@
+@import '../node_modules/@angular/material/theming';
+
+@include mat-core();
+
+$kubit-typography: mat-typography-config(
+);
+
+@include mat-core($kubit-typography);
+
+$kubit-theme-primary: mat-palette($mat-orange, 400);
+$kubit-theme-accent: mat-palette($mat-deep-orange, A200, A100, A400);
+$kubit-theme-warn: mat-palette($mat-red);
+
+$kubit-theme: mat-light-theme($kubit-theme-primary, $kubit-theme-accent, $kubit-theme-warn);
+
+@include angular-material-theme($kubit-theme);

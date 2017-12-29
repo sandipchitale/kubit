@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-card-content>
+    <mat-tab-group>
+      <mat-tab label="Info">
+        <div class="mat-table">
+          <div class="mat-header-row">
+            <div class="mat-header-cell">Name</div>
+            <!-- <div class="mat-header-cell">Labels</div>
+            <div class="mat-header-cell">Annotations</div> -->
+            <div class="mat-header-cell">Namespace</div>
+          </div>
+          <div class="mat-row" *ngFor="let service of services">
+            <div class="mat-cell">{{ service['metadata'].name }}</div>
+            <!-- <div class="mat-cell">
+              <span *ngFor="let label of service['metadata'].labels | entries">
+                {{label[0]}} : {{label[1]}}
+                <br/>
+              </span>
+            </div>
+            <div class="mat-cell">
+              <span *ngFor="let annotation of service['metadata'].annotations | entries">
+                {{annotation[0]}} : {{annotation[1]}}
+                <br/>
+              </span>
+            </div> -->
+            <div class="mat-cell">{{ service['metadata'].namespace }}</div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Raw">
+        <ng-template mat-tab-label>
+          <ku-kubit-icon iconic="code"></ku-kubit-icon>
+        </ng-template>
+        <pre [ngStyle]="{'max-width.%': 100, 'overflow-x': 'auto'}"><code *ngFor="let line of rawServices"> {{ line }}
+</code></pre>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

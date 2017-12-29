@@ -1,0 +1,35 @@
+<mat-card>
+  <mat-card-content>
+    <mat-tab-group>
+      <mat-tab label="Info">
+        <div class="mat-table">
+          <div class="mat-header-row">
+            <div class="mat-header-cell">Node</div>
+            <div class="mat-header-cell">Addresses</div>
+            <div class="mat-header-cell">CPU(s)</div>
+            <div class="mat-header-cell">Memory</div>
+            <div class="mat-header-cell">Pods</div>
+          </div>
+          <div class="mat-row" *ngFor="let node of nodes">
+            <div class="mat-cell">{{ node['metadata'].name }}</div>
+            <div class="mat-cell">
+              <span *ngFor="let address of node['status'].addresses">
+                {{address.address}}<br/>
+              </span>
+            </div>
+            <div class="mat-cell">{{ node['status'].capacity.cpu }} </div>
+            <div class="mat-cell">{{ node['status'].capacity.memory }} </div>
+            <div class="mat-cell">{{ node['status'].capacity.pods }} </div>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="Raw">
+        <ng-template mat-tab-label>
+          <ku-kubit-icon iconic="code"></ku-kubit-icon>
+        </ng-template>
+        <pre [ngStyle]="{'max-width.%': 100, 'overflow-x': 'auto'}"><code *ngFor="let line of rawNodes"> {{ line }}
+</code></pre>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+</mat-card>

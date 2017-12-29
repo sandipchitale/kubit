@@ -1,0 +1,106 @@
+<div class="top">
+    <mat-toolbar color="primary" class="drag">
+        <button mat-icon-button class="no-drag" (click)="sidenav.toggle()">
+            <ku-kubit-icon iconic="menu"></ku-kubit-icon>
+        </button>
+        &nbsp; &nbsp;
+        <img src="assets/kubit.png" width="32">
+        &nbsp;&nbsp;
+        <b>Kubit</b>
+        <i></i>
+        <span class="no-drag" [routerLink]="['/clusters']">
+            <ku-kubit-icon iconic="cluster"></ku-kubit-icon>
+        </span>
+        &nbsp; {{ currentCluster.name }} &nbsp; &nbsp; | &nbsp; &nbsp;
+        <span class="no-drag" [routerLink]="['/namespaces']">
+            <ku-kubit-icon iconic="namespace"></ku-kubit-icon>
+        </span>
+        &nbsp;
+        <mat-select class="no-drag" [(ngModel)]="selectedNamespace">
+            <mat-option *ngFor="let namespace of namespaces" [value]="namespace">
+                {{ namespace['metadata'].name }}
+            </mat-option>
+        </mat-select>
+        &nbsp; &nbsp;
+        <button mat-icon-button class="no-drag" (click)="github()">
+            <ku-kubit-icon iconic="github"></ku-kubit-icon>
+        </button>
+        &nbsp; &nbsp;
+        <button mat-icon-button class="no-drag" (click)="toggle()">
+            <ku-kubit-icon iconic="maximizeRestore"></ku-kubit-icon>
+        </button>
+        &nbsp; &nbsp;
+        <button mat-icon-button class="no-drag" (click)="hide()" title="Hide ( Escape ). Click tray icon to show again or use ( {{ shortcut }} ). Use standard shortcut to quit.">
+            <ku-kubit-icon iconic="hide"></ku-kubit-icon>
+        </button>
+    </mat-toolbar>
+    <mat-sidenav-container class="no-drag">
+        <mat-sidenav #sidenav mode="side" opened="true">
+            <mat-nav-list >
+                <a mat-list-item [routerLink]="['/dashboard']" routerLinkActive="active-section">
+                    <ku-kubit-icon iconic="dashboard"></ku-kubit-icon>&nbsp;&nbsp;Dashboard
+                </a>
+                <mat-divider></mat-divider>
+                <a mat-list-item [routerLink]="['/clusters']" routerLinkActive="active-section">
+                    <ku-kubit-icon iconic="cluster"></ku-kubit-icon>&nbsp;&nbsp;Clusters
+                </a>
+                <mat-divider></mat-divider>
+                <a mat-list-item [routerLink]="['/namespaces']" routerLinkActive="active-section">
+                    <ku-kubit-icon iconic="namespace"></ku-kubit-icon>&nbsp;&nbsp;Namespaces
+                </a>
+                <a mat-list-item [routerLink]="['/nodes']" routerLinkActive="active-section">
+                    <ku-kubit-icon iconic="node"></ku-kubit-icon>&nbsp;&nbsp;Nodes</a>
+                <a mat-list-item [routerLink]="['/persistentvolumes']" routerLinkActive="active-section">
+                    <ku-kubit-icon iconic="persistentvolume"></ku-kubit-icon>&nbsp;&nbsp;Pers Vols</a>
+                <!-- <mat-list-item>
+                    <mat-icon fontSet="fa" fontIcon="fa-rss"></mat-icon>&nbsp;&nbsp;Events</mat-list-item> -->
+                <mat-divider></mat-divider>
+                <a mat-list-item [routerLink]="['/persistentvolumeclaims']" routerLinkActive="active-section">
+                    <ku-kubit-icon iconic="persistentvolumeclaim"></ku-kubit-icon>&nbsp;&nbsp;Pers Vol Claims</a>
+                <a mat-list-item [routerLink]="['/configmaps']" routerLinkActive="active-section">
+                    <ku-kubit-icon iconic="configmap"></ku-kubit-icon>&nbsp;&nbsp;Config Maps</a>
+                <a mat-list-item [routerLink]="['/secrets']" routerLinkActive="active-section">
+                    <ku-kubit-icon iconic="secret"></ku-kubit-icon>&nbsp;&nbsp;Secrets</a>
+                    <mat-divider></mat-divider>
+                <a mat-list-item [routerLink]="['/deployments']" routerLinkActive="active-section">
+                    <ku-kubit-icon iconic="deployment"></ku-kubit-icon>&nbsp;&nbsp;Deployments</a>
+                <a mat-list-item [routerLink]="['/replicasets']" routerLinkActive="active-section">
+                    <ku-kubit-icon iconic="replicaset"></ku-kubit-icon>&nbsp;&nbsp;Replica Sets</a>
+                <!-- <mat-list-item>
+                    <mat-icon fontSet="fa" fontIcon="fa-tasks"></mat-icon>&nbsp;&nbsp;Daemon Sets</mat-list-item> -->
+                <a mat-list-item [routerLink]="['/pods']" routerLinkActive="active-section">
+                    <ku-kubit-icon iconic="pod"></ku-kubit-icon>&nbsp;&nbsp;Pods</a>
+                <a mat-list-item [routerLink]="['/endpoints']" routerLinkActive="active-section">
+                    <ku-kubit-icon iconic="endpoint"></ku-kubit-icon>&nbsp;&nbsp;Endpoints</a>
+                <a mat-list-item [routerLink]="['/services']" routerLinkActive="active-section">
+                    <ku-kubit-icon iconic="service"></ku-kubit-icon>&nbsp;&nbsp;Services</a>
+                <a mat-list-item [routerLink]="['/ingresses']" routerLinkActive="active-section">
+                    <ku-kubit-icon iconic="ingress"></ku-kubit-icon>&nbsp;&nbsp;Ingresses</a>
+                <!-- <mat-list-item>
+                    <mat-icon fontSet="fa" fontIcon="fa-university"></mat-icon>&nbsp;&nbsp;Service Accounts</mat-list-item> -->
+                <!-- <mat-list-item>
+                    <mat-icon fontSet="fa" fontIcon="fa-clone"></mat-icon>&nbsp;&nbsp;Replication Controllers</mat-list-item> -->
+                <mat-divider></mat-divider>
+                <a mat-list-item [routerLink]="['/jobs']" routerLinkActive="active-section">
+                    <ku-kubit-icon iconic="job"></ku-kubit-icon>&nbsp;&nbsp;Jobs</a>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div class="main">
+                <mat-toolbar class="mat-elevation-z1">
+                    <ku-breadcrumb></ku-breadcrumb>
+                    <i></i>
+                    <ku-kubit-icon iconic="search"></ku-kubit-icon>
+                    &nbsp; &nbsp;
+                    <mat-input-container>
+                        <input matInput type="text" class="no-drag" />
+                    </mat-input-container>
+                    &nbsp;
+                </mat-toolbar>
+                <div class="content">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

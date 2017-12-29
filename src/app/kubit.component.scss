@@ -1,0 +1,57 @@
+
+.top {
+  height: 100%;
+  display: grid;
+
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+mat-sidenav-container > mat-sidenav {
+  width: 200px;
+}
+
+[mat-list-item].active-section {
+  background-color: #FFA726 !important;
+  font-weight: bold;
+}
+
+mat-sidenav-content {
+  overflow: hidden;
+}
+
+mat-toolbar ku-kubit-icon {
+  font-size: 24px;
+}
+
+mat-toolbar i {
+  flex: 1 1 auto;
+}
+
+mat-toolbar mat-input-container {
+  max-width: 200px;
+  color: white;
+}
+
+mat-toolbar mat-select {
+  max-width: 140px;
+}
+
+/deep/ .mat-input-underline {
+  background-color: #ccc; /* replace this color with your accent color hex code */
+}
+
+/deep/ .mat-input-ripple {
+  background-color: #999; /* replace this color with your accent color hex code */
+
+}
+
+.main {
+  height: 100%;
+  overflow: hidden;
+}
+
+.main .content {
+  height: 100%;
+  overflow-y: auto;
+}

@@ -1,0 +1,15 @@
+<ol class="breadcrumb">
+    <li *ngFor="let breadcrumb of breadcrumbs; let last = last;">
+        <span *ngIf="breadcrumb.iconic">
+            <ku-kubit-icon iconic="{{breadcrumb.iconic}}"></ku-kubit-icon>&nbsp;
+        </span>
+        <a class="breadcrumba" *ngIf="!last" [routerLink]="[breadcrumb.url, breadcrumb.params]">
+            {{ breadcrumb.label }}
+        </a>
+        <span *ngIf="last">{{ breadcrumb.label }}</span>
+        <span *ngIf="breadcrumb.helpUrl">
+            &nbsp;
+            <ku-kubit-icon class="subtle" iconic="help" (click)="showHelp(breadcrumb.helpUrl)"></ku-kubit-icon>&nbsp;&nbsp;
+        </span>
+    </li>
+</ol>
